@@ -1,9 +1,16 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { formValidate } from "../utils/formValidation";
-
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Login = () =>{
+
+        const navigate = useNavigate();
+        const dispatch = useDispatch();
+
     const[isSignInForm, setIsSignInform ] = useState(true);
     const[ errorMessage, setErrorMessage ] = useState(null);
 
@@ -17,7 +24,37 @@ const Login = () =>{
         //! Validate the form data
         const message = formValidate(email.current.value,password.current.value);
         setErrorMessage(message);
-        //& SignIn / SignUp Operations
+        //& SignIn / SignUp - Operations
+        if(message) return null;
+        if(!isSignInForm){
+            //? Sign Up logic
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                const { uid, email, displayName } = auth.currentUser;
+                console.log(auth.currentUser);
+                navigate("/browse");
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorCode +"-" +errorMessage);
+            });
+        }
+        else{
+            //? Sign in logic
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => { 
+                const user = userCredential.user;
+                console.log(auth.currentUser);
+                navigate("/browse");
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                if(errorCode)
+                setErrorMessage("email   or password are invalid");
+            });
+        }
     }
     return(
         <div className="">
