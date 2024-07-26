@@ -14,6 +14,20 @@
  -Install the redux toolkit
     -configure the user details to the store to access all around the app
  - Implemented Sign Out feature
+ - Bugs fix : 
+   - fixing the user details on header 
+   - if the user is not logged in redirect to login page (vice versa)
+ - Unsubscribe the  onAuthStateChanged (like eventListener) callback
+ - maintain a separate string constant files
+ - Getting Movie data from the TMDB API 
+   - started with configure the api key & get access token
+ - Created custom hook for the background video
+ - created a movie slice
+ - fetch data for movies 
+ - fetch data for the trailer video
+ - update the store with the movie details
+ - update the store with the trailer for background playing
+ - 
 # Features
 - Login / Sign up
   - Sign in / Sign up form
