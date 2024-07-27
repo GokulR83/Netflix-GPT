@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react'
-import { API_OPTIONS } from '../utils/constants';
-import { useDispatch, useSelector } from 'react-redux';
-import { addTrailer } from '../utils/moiveSlice';
+import {  useSelector } from 'react-redux';
 import useMovieTrailer from '../hooks/useMovieTrailer';
 
 const VideoBackground = ({ movieId }) => {
   const  trailerDetails = useSelector(store => store.movies?.movieTrailer);
   useMovieTrailer(movieId);
   return (
-    <div className=''>
+    <div className='overflow-hidden'>
         <iframe 
         className="w-screen aspect-video overflow-hidden"
         src={`https://www.youtube.com/embed/${trailerDetails?.key}?si=pOZOPXX7iT2P9tdY?controls=0&autoplay=1&loop=1&mute=1&playlist=${trailerDetails?.key}`}

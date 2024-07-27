@@ -27,7 +27,11 @@
  - fetch data for the trailer video
  - update the store with the movie details
  - update the store with the trailer for background playing
- - 
+ - Fetching the data for different Movies data using TMDB API
+ - created a custom hooks for every API calls
+ - store it inside the store
+ - created movieList and movieCard inside the second container
+ - styled all the Component
 # Features
 - Login / Sign up
   - Sign in / Sign up form
