@@ -32,6 +32,13 @@
  - store it inside the store
  - created movieList and movieCard inside the second container
  - styled all the Component
+ - Created GPT for Gemini search bar
+ - Get the api key from the google gemini
+ - Integrate Gemini GPT  API
+ - first Gemini AI suggest a list of Movies name and the we are fetched movies data based on GPT suggestion
+ - show movie results based on the search text
+ - reuse the movieList component
+ - we done the memoization by avoiding unnecessary api calls
 # Features
 - Login / Sign up
   - Sign in / Sign up form
