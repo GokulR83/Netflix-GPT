@@ -39,6 +39,7 @@
  - show movie results based on the search text
  - reuse the movieList component
  - we done the memoization by avoiding unnecessary api calls
+- Made our app responsiveness for mobile devices and web
 # Features
 - Login / Sign up
   - Sign in / Sign up form

@@ -41,7 +41,6 @@ const GptSearchBar = () => {
     ],
     });
       const result = await chatSession.sendMessage(prompt);
-      console.log(result.response.text());
       const gptResults = result.response.text().split(",");
       //? this will return the promises because it will make all the call's next to next , it doesn't wait until the promise is get resolved
       // const moviePromises = getEachMovieDetails(gptResults[0]);
@@ -51,12 +50,12 @@ const GptSearchBar = () => {
       dispatch(addGptResults({movieResults:movieResults, movieQuery: gptResults }));
   }
   return (
-    <div className=' pt-[10%] flex justify-center '>
+    <div className='pt-[30%] md:pt-[14%] flex justify-center '>
         <form className="w-full bg-black rounded-lg  p-6 m-4 mb-0 flex justify-center" onSubmit={(e)=> e.preventDefault()}>
           <input 
             ref={searchText}
-            type='text' className='m-4 px-4 py-2 rounded-md w-6/12' placeholder='what would you like to watch' />
-            <button className='py-2 text-white px-4 m-4 bg-red-600 rounded-md w-2/12'
+            type='text' className='m-4 px-4 py-2 rounded-md md:w-6/12 w-5/12' placeholder='what would you like to watch' />
+            <button className='py-2 text-white px-4 m-4 bg-red-600 rounded-md md:w-2/12 w-3/12'
             onClick={handleGPTClick}
             >Search</button>
         </form>
