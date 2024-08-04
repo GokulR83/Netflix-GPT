@@ -1,18 +1,39 @@
 import Login from './Login'
 import Browse from './Browse'
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
+import EntireMovie from './EntireMovie';
+import Header from './Header';
 
+
+const FirstComponent = () =>{
+      return(
+        <>
+        <Header />
+        <Outlet />
+        </>
+      )
+}
 
 const Body = () => {
     const AppRouter = createBrowserRouter([
         {
-            path:"/",
+            path:"/login",
             element:<Login />,
         },
         {
-            path:"/browse",
-            element: <Browse />
+            path:"/",
+            element: <FirstComponent />,
+            children:[
+              {
+                path:"/",
+                element: <Browse />,
+            },
+              {
+                path:"movie/:id",
+                element:<EntireMovie />
+              }
+            ]
         },
 ])
   return (

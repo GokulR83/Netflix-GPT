@@ -39,7 +39,11 @@
  - show movie results based on the search text
  - reuse the movieList component
  - we done the memoization by avoiding unnecessary api calls
+ - made some changes on react router using outlet and link for the specific path
 - Made our app responsiveness for mobile devices and web
+- working on clickable movie card
+- Show the entire details of Movie with cast
+- Reuse the MovieList component for recommended movies and similar movies
 # Features
 - Login / Sign up
   - Sign in / Sign up form

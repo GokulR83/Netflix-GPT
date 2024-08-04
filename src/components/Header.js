@@ -15,7 +15,7 @@ const Header = () => {
 
   const handleSignOut = () =>{
       signOut(auth).then(() => {
-        navigate("/");
+        navigate("/login");
       }).catch((error) => {
         navigate("/error");
       });
@@ -25,7 +25,7 @@ const Header = () => {
         if (user) {
             const { uid, email, displayName, photoURL } = user;
             dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL:photoURL }));
-            navigate("/browse");
+            navigate("/");
         } else {
             dispatch(removeUser());
             navigate("/");
