@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import useEntireMovie from '../hooks/useEntireMovie'; 
 import MovieDetails from './MovieDetails';
@@ -7,15 +7,19 @@ import MovieLists from './MovieLists';
 import useSimilarMovie from '../hooks/useSimilarMovie';
 import { useSelector } from 'react-redux';
 import useRecommendedMovie from '../hooks/useRecommendedMovie';
+import useMovieDetails from '../hooks/useMovieDetails';
 
 const EntireMovie = () => {
-  const { id } = useParams();
+  const[ids, setIds ] = useState();
+  const params = useParams();
+  const { id } = params;
+  // console.log(id);
   const movie = useEntireMovie(id);
   useSimilarMovie(id);
   useRecommendedMovie(id);
+  useMovieDetails(id);
   const similarMovies = useSelector(store => store.movies.similarMovies);
   const recommendedMovies = useSelector(store => store.movies.recommendedMovie);
-  console.log(recommendedMovies);
   if(!movie) return null;
   return (
     <div className='bg-black'>
@@ -27,7 +31,6 @@ const EntireMovie = () => {
       {
         !recommendedMovies ? null : (<MovieLists title={"Recommended Movies"} movies={recommendedMovies} />)
       }
-      {/* <MovieLists title={"Recommended"} movies={""} /> */}
     </div>
   )
 }

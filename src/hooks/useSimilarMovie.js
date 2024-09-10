@@ -5,10 +5,10 @@ import { addSimilarMovies } from "../utils/moiveSlice";
 
 const useSimilarMovie = (movieId) => {
     const dispatch =useDispatch();
-    console.log(movieId);
+    // console.log(movieId);
     useEffect(()=>{
         getSimilarMovies();
-    },[]);
+    },[movieId]);
 
     const getSimilarMovies = async() =>{
         const data =await fetch(`https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`, API_OPTIONS);

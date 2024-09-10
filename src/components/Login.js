@@ -6,9 +6,10 @@ import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BG_URL, DEFAULT_USER_ICON } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 const Login = () =>{
-
+        const navigate = useNavigate();
         const dispatch = useDispatch();
 
     const[isSignInForm, setIsSignInform ] = useState(true);
@@ -37,6 +38,7 @@ const Login = () =>{
                 }).then(() => {
                     const { uid, email, displayName, photoURL } = auth.currentUser;
                     dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL:photoURL }));
+                    navigate('/');
                 }).catch((error) => {
                     setErrorMessage(error.message);
                 });
@@ -52,6 +54,7 @@ const Login = () =>{
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => { 
                 const user = userCredential.user;
+                navigate('/');
             })
             .catch((error) => {
                 const errorCode = error.code;

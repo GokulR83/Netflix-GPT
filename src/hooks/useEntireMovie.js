@@ -6,11 +6,11 @@ const useEntireMovie = (id) =>{
     const [movie, setMovie ] = useState(null);
     useEffect(()=>{
         fetchMovieDetails();
-    },[])
+    },[id])
     const fetchMovieDetails = async() =>{
         const data = await fetch(`https://api.themoviedb.org/3/movie/${id}`, API_OPTIONS);
         const json = await data.json();
-        console.log(json);
+        // console.log(json);
         setMovie(json);
     }
     return movie;

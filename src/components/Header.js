@@ -12,7 +12,9 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector(store => store.user);
   const toggleGptSearch = useSelector(store => store.gpt.toggleGptSearch);
-
+  // if(!user){
+  //   navigate(`/login`);
+  // }
   const handleSignOut = () =>{
       signOut(auth).then(() => {
         navigate("/login");
@@ -28,7 +30,7 @@ const Header = () => {
             navigate("/");
         } else {
             dispatch(removeUser());
-            navigate("/");
+            navigate("/login");
         }
         });
         return () => unsubscribe();

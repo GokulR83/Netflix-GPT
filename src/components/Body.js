@@ -30,7 +30,7 @@ const Body = () => {
                 element: <Browse />,
             },
               {
-                path:"movie/:id",
+                path:"movie/:id", 
                 element:<EntireMovie />
               }
             ]
